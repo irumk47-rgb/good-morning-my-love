@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Good Morning Fizza 2.0</title>
+    <style>
+        body{
+            background:black;
+            color:lime;
+            font-family:monospace;
+            text-align:center;
+            overflow:hidden;
+        }
+
+        button{
+            padding:15px 30px;
+            font-size:20px;
+            margin-top:100px;
+            cursor:pointer;
+        }
+
+        #message{
+            font-size:30px;
+            margin-top:50px;
+            white-space:pre-line;
+        }
+
+        .boom{
+            position:absolute;
+            font-size:40px;
+            animation:explode 2s linear forwards;
+        }
+
+        @keyframes explode{
+            from{
+                opacity:1;
+                transform:translateY(0) scale(1);
+            }
+            to{
+                opacity:0;
+                transform:translateY(-300px) scale(2);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🔐 SECRET SYSTEM ACCESS 🔐</h1>
+
+<button onclick="startDrama()">CLICK IF YOU DARE</button>
+
+<div id="message"></div>
+
+<script>
+
+function startDrama(){
+
+    document.getElementById("message").innerHTML =
+    "ACCESSING FIZZA DATABASE...<br><br>" +
+    "██████████ 100% COMPLETE<br><br>" +
+    "🚨 ALERT 🚨<br>" +
+    "GOOD MORNING FIZZA 🌞👑<br><br>" +
+    "THE SUN HAS REPORTED FOR DUTY.<br>" +
+    "THE BIRDS HAVE FILED THEIR MORNING REPORT.<br>" +
+    "THE ENTIRE PLANET IS NOW WAITING FOR YOU TO WAKE UP 😭☕";
+
+    let speech = new SpeechSynthesisUtterance(
+        "Attention Fizza. Good Morning. The universe requests your immediate awakening."
+    );
+
+    speech.rate = 0.9;
+    speech.pitch = 1.2;
+    speechSynthesis.speak(speech);
+
+    for(let i=0;i<50;i++){
+
+        let boom = document.createElement("div");
+        boom.className = "boom";
+
+        let emojis = ["💥","🔥","💣","⚡","🚨"];
+
+        boom.innerHTML =
+        emojis[Math.floor(Math.random()*emojis.length)];
+
+        boom.style.left =
+        Math.random()*window.innerWidth + "px";
+
+        boom.style.top =
+        Math.random()*window.innerHeight + "px";
+
+        document.body.appendChild(boom);
+
+        setTimeout(()=>{
+            boom.remove();
+        },2000);
+    }
+}
+
+</script>
+
+</body>
+</html>
